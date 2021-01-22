@@ -1,3 +1,4 @@
+#!/bin/sh
 DOTENV_PATH="${1}"
 DOTENV_PREFIX="${2}"
 GLOBAL_ENV=$(env)
