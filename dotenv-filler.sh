@@ -11,7 +11,12 @@ fi
 
 # Process variable prefix
 if [ -n "${DOTENV_PREFIX}" ]; then
-    DOTENV_PREFIX="${DOTENV_PREFIX}_"
+    DOTENV_PREFIX=$( \
+        printf '%s' "${DOTENV_PREFIX}_" \
+            | sed -e 's/[&*+,./:;@|~-]/_/g' \
+            | tr -cd '[a-zA-Z0-9_]' \
+            | tr '[:lower:]' '[:upper:]' \
+    )
 fi
 
 # Process file

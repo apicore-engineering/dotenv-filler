@@ -9,6 +9,7 @@ You can also provide a prefix to help keeping your variables separate.
 - POSIX compatible shell
 - [sed](https://en.wikipedia.org/wiki/Sed) utility
 - [env](https://en.wikipedia.org/wiki/Env) utility
+- [tr](https://en.wikipedia.org/wiki/Tr_(Unix)) utility
 
 ## Usage
 ```
@@ -16,7 +17,7 @@ sh dotenv-filler.sh FILE [VAR_PREFIX]
 ```
 Parameters:
 - `FILE` The key-value file to apply changes to
-- `VAR_PREFIX` - Look for the variables with this prefix in the environment.
+- `VAR_PREFIX` - Look for the variables with this prefix in the environment. This value is sanitized: All `&*+,./:;@|~-` characters are replaced with underscores (`_`) and then all non-alphanumeric characters (except `_`) are dropped. Finally, the value is changed to all uppercase for a usual env varaible format. This helps when one wants to use strings from other sources (for example git branch names) as prefix.
 
 ### Examples
 Let's take a file named `.env` with the following content:
