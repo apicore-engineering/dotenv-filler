@@ -12,8 +12,11 @@ You can also provide a prefix to help keeping your variables separate.
 
 ## Usage
 ```
-sh dotenv-filler.sh FILE [VAR PREFIX]
+sh dotenv-filler.sh FILE [VAR_PREFIX]
 ```
+Parameters:
+- `FILE` The key-value file to apply changes to
+- `VAR_PREFIX` - Look for the variables with this prefix in the environment.
 
 ### Examples
 Let's take a file named `.env` with the following content:

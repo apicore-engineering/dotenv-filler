@@ -4,7 +4,7 @@ GLOBAL_ENV=$(env)
 
 # Sanity check file path
 if ! [ -f "${DOTENV_PATH}" ]; then
-    echo "Usage: ${0} FILE [VAR PREFIX]"
+    echo "Usage: ${0} FILE [VAR_PREFIX]"
     exit 1
 fi
 
