@@ -23,7 +23,7 @@ fi
 for DOTENV_KEY in $(sed -n 's/^\([a-zA-Z_][a-zA-Z0-9_]*\)=.*$/\1/p' "${DOTENV_PATH}"); do
     DOTENV_VALUE=$(printf -- '%s' "${GLOBAL_ENV}" | sed -n "s/^${DOTENV_PREFIX}${DOTENV_KEY}=\\(.*\\)\$/\\1/p")
     if [ -n "${DOTENV_VALUE}" ]; then
-        DOTENV_VALUE_ESC=$(printf -- '%s' "${DOTENV_VALUE}" | sed 's/[&/\]/\\&/g')
+        DOTENV_VALUE_ESC=$(printf -- '%s' "${DOTENV_VALUE}" | sed '/ /{ s/"/\\"/; s/^/"/; s/$/"/; }' | sed 's/[&/\]/\\&/g')
         sed -i "s/^\\(${DOTENV_KEY}=\\).*\$/\\1${DOTENV_VALUE_ESC}/" "${DOTENV_PATH}"
     fi
 done
